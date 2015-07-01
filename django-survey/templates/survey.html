@@ -11,7 +11,7 @@
 <div>
 	<form action="/survey/{{survey.id}}/" method="post">{% csrf_token %}
 
-		<h3 class="collapsible" id="response_metadata">Response Metadata<span></span></h3>
+		<!--<h3 class="collapsible" id="response_metadata">Response Metadata<span></span></h3>
 		<div class="category-container">
 
 		<div class="field-wrapper question-required">
@@ -49,11 +49,11 @@
 				{{ response_form.comments }}
 			</div>
 		</div>
-	</div>
+	</div>-->
 
 		<ol class="survey-questions">
 		{% for category in categories %}
-			<h3 class="collapsible">{{category|title}} Questions<span></span></h3>
+			<!--<h3 class="collapsible">{{category|title}} Questions<span></span></h3>-->
 			<div class="category-container">
 			{% for field in response_form %}
 				{% if field.field.widget.attrs.category == category %}
