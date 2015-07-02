@@ -2,5 +2,18 @@
 
 {% block body %}
 
-Thanks! Your confirmation code is {{uuid}}. Use this to refer to your response. In case you have any questions, contact {{ email }}
+<h2><a href="/">Click to return to the home page</a></h2>
+
+{% if not filtered_list %}
+    Sorry, your search came back with zero vehicles.
+{% endif %}
+
+<ul>
+{% for vehicle in filtered_list %}
+    <li>{{ vehicle }}</li>
+{% endfor %}
+</ul>
+
+
+<p>Thanks! Your confirmation code is {{uuid}}. Use this to refer to your response. In case you have any questions, contact {{ email }}</p>
 {% endblock %}

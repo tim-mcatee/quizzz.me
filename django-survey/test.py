@@ -4,4 +4,6 @@ import django
 django.setup()
 from survey.models import debug_response
 
+
 debug_response()
+
