@@ -45,43 +45,47 @@ def get_vehicle_list(uuid):
 	r = Response.objects.filter(interview_uuid = uuid)[0]
 	qs = AnswerBase.objects.filter(response_id = r.id)
    	q1id = qs.filter(question_id = 1)[0]
-   	q1qs = AnswerSelect.objects.filter(answerbase_ptr_id = q1id.id)
-   	for e in q1qs:
-   		q1 = e.body
+   	q1qs = AnswerSelect.objects.filter(answerbase_ptr_id = q1id.id)[0]
+   	q1 = q1qs.body
 	q2id = qs.filter(question_id = 2)[0]
-   	q2qs = AnswerSelect.objects.filter(answerbase_ptr_id = q2id.id)
-   	for e in q2qs:
-   		q2 = e.body
+   	q2qs = AnswerSelect.objects.filter(answerbase_ptr_id = q2id.id)[0]
+   	q2 = q2qs.body
 	q9id = qs.filter(question_id = 9)[0]
-   	q9qs = AnswerSelect.objects.filter(answerbase_ptr_id = q9id.id)
-   	for e in q9qs:
-   		q9 = e.body 
+   	q9qs = AnswerSelect.objects.filter(answerbase_ptr_id = q9id.id)[0]
+   	q9 = q9qs.body 
 	q10id = qs.filter(question_id = 10)[0]
-   	q10qs = AnswerSelect.objects.filter(answerbase_ptr_id = q10id.id)
-   	for e in q10qs:
-   		q10 = e.body
+   	q10qs = AnswerSelect.objects.filter(answerbase_ptr_id = q10id.id)[0]
+   	q10 = q10qs.body
 	q13id = qs.filter(question_id = 13)[0]
-   	q13qs = AnswerSelect.objects.filter(answerbase_ptr_id = q13id.id)
-   	for e in q13qs:
-   		q13 = e.body
+   	q13qs = AnswerSelect.objects.filter(answerbase_ptr_id = q13id.id)[0]
+   	q13 = q13qs.body
 	q14id = qs.filter(question_id = 14)[0]
-   	q14qs = AnswerSelect.objects.filter(answerbase_ptr_id = q14id.id)
-   	for e in q14qs:
-   		q14 = e.body
+   	q14qs = AnswerSelect.objects.filter(answerbase_ptr_id = q14id.id)[0]
+   	q14 = q14qs.body
 	q15id = qs.filter(question_id = 15)[0]
-   	q15qs = AnswerSelect.objects.filter(answerbase_ptr_id = q15id.id)
-   	for e in q15qs:
-   		q15 = e.body
+   	q15qs = AnswerSelect.objects.filter(answerbase_ptr_id = q15id.id)[0]
+   	q15 = q15qs.body
 	q16id = qs.filter(question_id = 16)[0]
-   	q16qs = AnswerSelect.objects.filter(answerbase_ptr_id = q16id.id)
-   	for e in q16qs:
-   		q16 = e.body
+   	q16qs = AnswerSelect.objects.filter(answerbase_ptr_id = q16id.id)[0]
+   	q16 = q16qs.body
 	q17id = qs.filter(question_id = 17)[0]
-   	q17qs = AnswerSelect.objects.filter(answerbase_ptr_id = q17id.id)
-   	for e in q17qs:
-   		q17 = e.body
+   	q17qs = AnswerSelect.objects.filter(answerbase_ptr_id = q17id.id)[0]
+   	q17 = q17qs.body
 	return cars_db_filter(q1,q2,q9,q10,q13,q14,q15,q16,q17)
 
+def get_car_count(request):
+	q1 = request.POST["question_1"]
+	q2 = request.POST["question_2"]
+	q9 = request.POST["question_9"]
+	q10 = request.POST["question_10"]
+	q13 = request.POST["question_13"]
+	q14 = request.POST["question_14"]
+	q15 = request.POST["question_15"]
+	q16 = request.POST["question_16"]
+	q17 = request.POST["question_17"]
+	car_list = cars_db_filter(q1,q2,q9,q10,q13,q14,q15,q16,q17)
+	car_count = str(len(car_list))
+ 	return HttpResponse(car_count)
 
 
 

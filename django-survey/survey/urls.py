@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 	url(r'^survey/(?P<id>\d+)/$', 'survey.views.SurveyDetail', name='survey_detail'),
 	url(r'^confirm/(?P<uuid>\w+)/$', 'survey.views.Confirm', name='confirmation'),
 	url(r'^privacy/$', 'survey.views.privacy', name='privacy_statement'),
+	url(r'^get_car_count/$', 'survey.views.get_car_count', name="get_car_count"),
 
 
 	# Uncomment the admin/doc line below to enable admin documentation:

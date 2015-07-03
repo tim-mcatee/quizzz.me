@@ -9,7 +9,7 @@
 </div>
 
 <div>
-	<form action="/survey/{{survey.id}}/" method="post">{% csrf_token %}
+	<form action="/survey/{{survey.id}}/" method="post" name="survey-form" id="survey-form">{% csrf_token %}
 
 		<!--<h3 class="collapsible" id="response_metadata">Response Metadata<span></span></h3>
 		<div class="category-container">
@@ -83,6 +83,7 @@
 	</form>
 
 </div>
+<div id="survey-extras"></div>
 
 {% endblock %}
 
@@ -92,8 +93,29 @@
 		$(document).ready(function() {
 			//collapsible management
 			$('.collapsible').collapsible({defaultOpen: 'response_metadata'});
+		    $( "select" ).change(function(){
+		    	var f = $('#survey-form').serialize();
+		    	console.log(f);
+
+		    $.ajax({
+		                url: "{% url 'get_car_count' %}",
+		                type: "post",
+		                data: f,
+		                success: function(data) {
+		                	$("#survey-extras").css({"position": "fixed", "float": "right","top": "200px", "right": "150px","background-color": "blue", "width": "20%", "color":"white",
+		                		"padding":"20px"});
+		                    $("#survey-extras").html("<h1>Out of 2390 new vehicle models sold in 2015, there are "+data+" that match your critera.</h1>");
+		                },
+		                error: function(data) { 
+		                	$("#survey-extras").css({"position": "fixed", "float": "right","top": "200px", "right": "50px","background-color": "red", "width": "20%"});
+		                	 
+		                	$("#survey-extras").html("<p>Got an error dude</p>");
+		                }
+		            });
+		    }); 
+
 		});
-	<script src="media/js/{%"
 	</script>
+
 	
 {% endblock %}
